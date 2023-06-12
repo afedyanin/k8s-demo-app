@@ -1,0 +1,20 @@
+# https://kubernetes.github.io/ingress-nginx/deploy/#docker-for-mac
+
+# kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.2.1/deploy/static/provider/cloud/deploy.yaml
+# kubectl patch svc -n ingress-nginx ingress-nginx-controller -p '{"spec": {"ports": [{"appProtocol": "http", "name": "http", "port": 8080, "protocol": "TCP", "targetPort": "http"}]}}' --type merge
+
+# https://github.com/kubernetes/ingress-nginx
+# https://kubernetes.github.io/ingress-nginx/deploy/#quick-start
+
+helm upgrade --install ingress-nginx ingress-nginx --repo https://kubernetes.github.io/ingress-nginx --namespace ingress-nginx --create-namespace
+
+kubectl get pods --namespace=ingress-nginx
+
+kubectl create deployment demo --image=httpd --port=80
+
+kubectl expose deployment demo
+
+kubectl create ingress demo-localhost --class=nginx --rule="demo.localdev.me/*=demo:80"
+
+kubectl port-forward --namespace=ingress-nginx service/ingress-nginx-controller 8080:80
+

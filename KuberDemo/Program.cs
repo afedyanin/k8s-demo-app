@@ -1,3 +1,5 @@
+using KuberDemo.HealthChecks;
+
 namespace KuberDemo
 {
     public class Program
@@ -6,6 +8,9 @@ namespace KuberDemo
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddHealthChecks()
+                  .AddCheck<RandomHealthCheck>("Random check");
+            
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
@@ -15,6 +20,10 @@ namespace KuberDemo
             app.UseSwagger();
             app.UseSwaggerUI();
             app.MapControllers();
+            app.MapHealthChecks("/health/startup");
+            app.MapHealthChecks("/healthz");
+            app.MapHealthChecks("/ready");
+
             app.Run();
         }
     }
