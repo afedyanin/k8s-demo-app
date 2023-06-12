@@ -1,4 +1,5 @@
 using KuberDemo.HealthChecks;
+using Prometheus;
 
 namespace KuberDemo
 {
@@ -9,7 +10,8 @@ namespace KuberDemo
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddHealthChecks()
-                  .AddCheck<RandomHealthCheck>("Random check");
+                  .AddCheck<RandomHealthCheck>("Random check")
+                  .ForwardToPrometheus(); 
             
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
@@ -20,6 +22,9 @@ namespace KuberDemo
             app.UseSwagger();
             app.UseSwaggerUI();
             app.MapControllers();
+            
+            app.UseMetricServer();
+            
             app.MapHealthChecks("/health/startup");
             app.MapHealthChecks("/healthz");
             app.MapHealthChecks("/ready");

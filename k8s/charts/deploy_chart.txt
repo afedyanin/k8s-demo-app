@@ -1,6 +1,6 @@
 # kubectl create namespace local
 
-helm upgrade --install kuber-demo-app . --namespace=local --set kuberdemo.image.tag="v0.0.7" --debug --dry-run
+helm upgrade --install kuber-demo-app . --namespace=local --set kuberdemo.image.tag="v0.0.8" --debug --dry-run
 
 http://k8s-demo-app.local/swagger/index.html
 

@@ -1,0 +1,20 @@
+https://itsecforu.ru/2021/04/12/%E2%98%B8%EF%B8%8F-%D0%BA%D0%B0%D0%BA-%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%B8%D1%82%D1%8C-prometheus-%D0%B8-grafana-%D0%BD%D0%B0-kubernetes-%D1%81-%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D1%8C%D1%8E-h/
+
+
+helm repo add stable https://charts.helm.sh/stable
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+
+helm search repo prometheus-community
+
+helm install my-prometheus prometheus-community/kube-prometheus-stack -n monitoring
+
+kubectl get svc -n monitoring
+
+kubectl edit svc stable-kube-prometheus-sta-prometheus
+
+kubectl edit svc stable-grafana
+
+
+UserName: admin
+Password: prom-operator
+
