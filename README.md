@@ -10,10 +10,6 @@ k8s demo app
 - HealthCheck - для startup/live/ready проб кубера. Рандомно фэйлится примерно каждый пятый запрос.
 - Базовые метрики для Прометеуса по стандартному пути /metrics
 
-## Серия вводных статей по k8s для ASP.NET
-
-- [Series: Deploying ASP.NET Core applications to Kubernetes](https://andrewlock.net/series/deploying-asp-net-core-applications-to-kubernetes/)
-
 ## Этап 1. Собираем кубер кластер на локальном компьютере
 
 ### 1 Включаем k8s в Docker Desktop
@@ -77,6 +73,8 @@ helm install kube-prometheus-demo prometheus-community/kube-prometheus-stack -n 
 
 ### 5 Настраиваем метрики в прометеусе через Prometheus Operator
 
+- [Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator/pkgs/container/prometheus-config-reloader)
+- [Intro](https://prometheus-operator.dev/docs/prologue/introduction/)
 - [A Beginner's Guide to Using the Prometheus Operator](https://blog.container-solutions.com/prometheus-operator-beginners-guide)
 
 #### Накатываем yaml файлы из каталога репозитория \k8s\prometheus
@@ -85,7 +83,7 @@ helm install kube-prometheus-demo prometheus-community/kube-prometheus-stack -n 
 kubectl apply -f service-monitor.yaml -n monitoring
 ```
 
-### Проверяем доступность таргетов
+### Проверяем доступность таргетов (после деплоя приложения - см. ниже)
 
 ```
 kubectl port-forward -n monitoring svc/prometheus-operated 9090
@@ -101,44 +99,45 @@ kubectl port-forward -n monitoring svc/prometheus-operated 9090
 ```
 kubectl port-forward -n monitoring svc/kube-prometheus-demo-grafana 3000:80
 ```
+Логинимся в графану
 
 - http://localhost:3000/?orgId=1
 
 admin
 prom-operator
 
-Дашборды k8s
+Устанавливаем дашборды k8s
 - [Kubernetes Cluster Prometheus](https://grafana.com/grafana/dashboards/6417-kubernetes-cluster-prometheus/
 - [Kubernetes Cluster](https://grafana.com/grafana/dashboards/7249-kubernetes-cluster/)
 - [Kubernetes Pod Metrics](https://grafana.com/grafana/dashboards/747-pod-metrics/)
 
-Дашборды asp.net
+Устанавливаем дашборды asp.net
 - [ASP.NET Core Grafana dashboards](https://github.com/JamesNK/aspnetcore-grafana)
 - [prometheus-net dashboards](https://github.com/prometheus-net/grafana-dashboards)
 
 ### 7 Устанавливаем nginx ингресс (опционально)
 см. папку k8s\nginx
 
-## Собираем и деплоим тестовое приложение
+## Этап 2. Собираем и деплоим тестовое приложение
 
-### Собираем докер образ солюшена командой 
+### 1 Собираем докер образ солюшена командой 
 
 ```
 docker build -t kuberdemo:v0.0.12 .
 ```
 
-### Выкладываем в кубер
+### 2 Выкладываем в кубер
 
-Создаем неймспейс
+#### Создаем неймспейс
 ```
 kubectl create namespace local
 ```
-### Проверяем чарты из каталога репозитория \k8s\charts
+#### Проверяем и правим чарты из каталога репозитория \k8s\charts
 
 - values.yaml - проставить тег релиза из собранного докеримиджа - tag: "v0.0.12"
 - chart.yaml - увеличить версии на +1
 
-### Катим деплой через хелм чарт
+#### Катим деплой через хелм чарт
 
 Проверка
 ```
@@ -150,19 +149,28 @@ helm upgrade --install kuber-demo-app . --namespace=local --debug --dry-run
 helm upgrade --install kuber-demo-app . --namespace=local --debug 
 ```
 
-### Проверяем доступность подов и форвардим порты
+### 3 Проверяем доступность подов
 
 ```
 kubectl get pods -n local
 ```
-Форвардим порты
+### 4 Форвардим порты
 
 ```
 kubectl port-forward -n local svc/kuber-demo-app 80
 ```
 
-### Приложение доступно по локалхосту
+### 5 Приложение доступно по локалхосту
 
 - http://localhost/WeatherForecast
 - http://localhost/Metrics
 - http://localhost/ready
+
+## Полезные ресурсы
+
+## k8s & asp.net
+- [Series: Deploying ASP.NET Core applications to Kubernetes](https://andrewlock.net/series/deploying-asp-net-core-applications-to-kubernetes/)
+
+
+
+
