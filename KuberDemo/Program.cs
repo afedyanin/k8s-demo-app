@@ -22,11 +22,13 @@ namespace KuberDemo
             app.UseSwagger();
             app.UseSwaggerUI();
             app.MapControllers();
-            
+
+            app.UseHttpMetrics(); 
             app.UseMetricServer();
-            
-            app.MapHealthChecks("/health/startup");
-            app.MapHealthChecks("/healthz");
+            app.MapMetrics();
+
+            app.MapHealthChecks("/startup");
+            app.MapHealthChecks("/live");
             app.MapHealthChecks("/ready");
 
             app.Run();

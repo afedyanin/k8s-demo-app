@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: kube-prometheus-demo-kuber-demo-app
+  namespace: monitoring
+  labels:
+    release: kube-prometheus-demo
+spec:
+  endpoints:
+    - port: http
+  namespaceSelector:
+    matchNames:
+      - local
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: kuber-demo-app
+      app.kubernetes.io/name: kuber-demo-app

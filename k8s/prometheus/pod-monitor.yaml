@@ -1,0 +1,15 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: kuber-demo-app
+  labels:
+    name: kuber-demo-app
+spec:
+  namespaceSelector:
+    matchNames:
+      - local
+  selector:
+    matchLabels:
+      name: kuber-demo-app
+  podMetricsEndpoints:
+  - targetPort: 80

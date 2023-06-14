@@ -4,11 +4,9 @@ namespace KuberDemo.HealthChecks
 {
     public class RandomHealthCheck : IHealthCheck
     {
-        private static readonly Random _rnd = new Random();
-
         public Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
         {
-            var result = _rnd.Next(5) != 0
+            var result = Random.Shared.Next(5) != 0
                 ? HealthCheckResult.Healthy()
                 : HealthCheckResult.Unhealthy("Failed random");
 
