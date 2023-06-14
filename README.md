@@ -1,13 +1,20 @@
 # k8s-demo-app
 k8s demo app
 
-## Основы
+## О приложении
 
-Серия вводных статей по k8s для ASP.NET
+Приложение - простое ASP.NET Web API с классическим контроллером - WeatherForecast.
+Единственный Get метод выдает ответ с рандомной задержкой, чтобы эмулировать загрузку.
+
+Кроме самого контроллера реализованы:
+- HealthCheck - для startup/live/ready проб кубера. Рандомно фэйлится примерно каждый пятый запрос.
+- Базовые метрики для Прометеуса по стандартному пути /metrics
+
+## Серия вводных статей по k8s для ASP.NET
+
 - [Series: Deploying ASP.NET Core applications to Kubernetes](https://andrewlock.net/series/deploying-asp-net-core-applications-to-kubernetes/)
 
-
-## Собираем кубер кластер на локальном компьютере
+## Этап 1. Собираем кубер кластер на локальном компьютере
 
 ### 1 Включаем k8s в Docker Desktop
 
