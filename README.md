@@ -84,6 +84,7 @@ kubectl port-forward -n monitoring svc/kube-prometheus-demo-grafana 3000:80
 ```
 Логинимся в графану
 - http://localhost:3000/?orgId=1
+
 admin/prom-operator
 
 Устанавливаем дашборды k8s
