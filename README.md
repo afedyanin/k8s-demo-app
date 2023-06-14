@@ -175,7 +175,7 @@ kubectl port-forward -n local svc/kuber-demo-app 80
 - [https://www.yogihosting.com/kubernetes-ingress-aspnet-core/](https://www.yogihosting.com/kubernetes-ingress-aspnet-core/)
 - [Kubernetes: ClusterIP, NodePort, or Ingress? When to Use Each](https://www.howtogeek.com/devops/kubernetes-clusterip-nodeport-or-ingress-when-to-use-each/)
 - [Enable Ingress controller on Docker Desktop with WLS2](https://stackoverflow.com/questions/65193758/enable-ingress-controller-on-docker-desktop-with-wls2)
-- [ingress-nginx](# https://github.com/kubernetes/ingress-nginx)
+- [ingress-nginx](https://github.com/kubernetes/ingress-nginx)
 - [ingress-nginx-quick-start](https://kubernetes.github.io/ingress-nginx/deploy/#quick-start)
 
 
