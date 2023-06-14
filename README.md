@@ -107,7 +107,7 @@ admin
 prom-operator
 
 Устанавливаем дашборды k8s
-- [Kubernetes Cluster Prometheus](https://grafana.com/grafana/dashboards/6417-kubernetes-cluster-prometheus/
+- [Kubernetes Cluster Prometheus](https://grafana.com/grafana/dashboards/6417-kubernetes-cluster-prometheus/)
 - [Kubernetes Cluster](https://grafana.com/grafana/dashboards/7249-kubernetes-cluster/)
 - [Kubernetes Pod Metrics](https://grafana.com/grafana/dashboards/747-pod-metrics/)
 
@@ -168,8 +168,16 @@ kubectl port-forward -n local svc/kuber-demo-app 80
 
 ## Полезные ресурсы
 
-## k8s & asp.net
 - [Series: Deploying ASP.NET Core applications to Kubernetes](https://andrewlock.net/series/deploying-asp-net-core-applications-to-kubernetes/)
+- [Helm](https://github.com/helm/helm)
+- [prometheus-net](https://github.com/prometheus-net/prometheus-net)
+- [Развертывание ASP.NET Core приложения в Kubernetes](https://habr.com/ru/articles/709342/)
+- [Build ASP.NET Core applications deployed as Linux containers into an AKS/Kubernetes orchestrator](https://learn.microsoft.com/en-us/dotnet/architecture/containerized-lifecycle/design-develop-containerized-apps/build-aspnet-core-applications-linux-containers-aks-kubernetes)
+- [https://www.yogihosting.com/kubernetes-ingress-aspnet-core/](https://www.yogihosting.com/kubernetes-ingress-aspnet-core/)
+- [Kubernetes: ClusterIP, NodePort, or Ingress? When to Use Each](https://www.howtogeek.com/devops/kubernetes-clusterip-nodeport-or-ingress-when-to-use-each/)
+- [Enable Ingress controller on Docker Desktop with WLS2](https://stackoverflow.com/questions/65193758/enable-ingress-controller-on-docker-desktop-with-wls2)
+- [ingress-nginx](# https://github.com/kubernetes/ingress-nginx)
+- [ingress-nginx-quick-start](https://kubernetes.github.io/ingress-nginx/deploy/#quick-start)
 
 
 
