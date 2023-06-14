@@ -148,7 +148,7 @@ kubectl port-forward -n local svc/kuber-demo-app 80
 - [prometheus-net](https://github.com/prometheus-net/prometheus-net)
 - [Развертывание ASP.NET Core приложения в Kubernetes](https://habr.com/ru/articles/709342/)
 - [Build ASP.NET Core applications deployed as Linux containers into an AKS/Kubernetes orchestrator](https://learn.microsoft.com/en-us/dotnet/architecture/containerized-lifecycle/design-develop-containerized-apps/build-aspnet-core-applications-linux-containers-aks-kubernetes)
-- [https://www.yogihosting.com/kubernetes-ingress-aspnet-core/](https://www.yogihosting.com/kubernetes-ingress-aspnet-core/)
+- [kubernetes-ingress-aspnet-core](https://www.yogihosting.com/kubernetes-ingress-aspnet-core/)
 - [Kubernetes: ClusterIP, NodePort, or Ingress? When to Use Each](https://www.howtogeek.com/devops/kubernetes-clusterip-nodeport-or-ingress-when-to-use-each/)
 - [Enable Ingress controller on Docker Desktop with WLS2](https://stackoverflow.com/questions/65193758/enable-ingress-controller-on-docker-desktop-with-wls2)
 - [ingress-nginx](https://github.com/kubernetes/ingress-nginx)
